@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTFS Transit Visualizations — City Gallery</title>
+  <meta name="description" content="Animated GTFS transit visualizations for Seattle and Portland.">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <header>
+      <h1>GTFS Transit Visualizations</h1>
+      <p class="lead">Morning transit activity animated from GTFS feeds. Designed to match the look and feel of my Commuting Patterns site.</p>
+      
+      <nav class="nav">
+        <a class="pill" href="#seattle">Seattle</a>
+        <a class="pill" href="#portland">Portland</a>
+        <a class="pill" href="https://sungyol2.github.io/Commuting_Patterns/">Commuting Patterns ↗</a>
+        <a class="pill" href="https://github.com/USERNAME/REPO">GitHub Repo ↗</a>
+      </nav>
+    </header>
+
+    <main class="grid">
+
+      <!-- SEATTLE CARD -->
+      <section class="card" id="seattle">
+        <h2>Seattle–Bellevue–Tacoma</h2>
+        <video controls poster="assets/thumb_seattle.png">
+          <source src="assets/seattle_gtfs.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Autumn weekday morning movement across the regional network.<br>
+        Employment density from LODES8 shown beneath.</p>
+        <div class="meta">Modes: Light rail, Streetcar, Commuter rail, Bus, Ferry</div>
+      </section>
+
+      <!-- PORTLAND CARD -->
+      <section class="card" id="portland">
+        <h2>Portland</h2>
+        <video controls poster="assets/thumb_portland.png">
+          <source src="assets/portland_gtfs.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Weekday morning transit pattern over TriMet’s network.</p>
+        <div class="meta">Modes: Light rail, Bus, Commuter rail (if applicable)</div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="yr"></span> Sun-Gyo Lee — Built with open data • GitHub Pages</div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

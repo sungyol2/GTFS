@@ -1,0 +1,16 @@
+Below is a list of the changes included in the SC-Fall-2025.6 release of Sound Transit GTFS data.
+
+Schedule Changes
+* T Line:
+    * Fall 2025 and Winter 2026 holidays
+* S and N Line:
+    * September 28 game train service
+
+Route Changes
+* none
+
+Stop Changes
+* none
+
+Other Changes
+* none
