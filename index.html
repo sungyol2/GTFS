@@ -4,59 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GTFS Transit Visualizations — City Gallery</title>
-  <meta name="description" content="Animated GTFS transit visualizations for Seattle and Portland.">
+  <meta name="description" content="Animated GTFS transit visualizations for Seattle and Portland — morning peak movement rendered from GTFS feeds.">
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <div class="wrapper">
-
     <header>
       <h1>GTFS Transit Visualizations</h1>
-      <p class="lead">Morning transit activity animated from GTFS feeds. Designed to match the look and feel of my Commuting Patterns site.</p>
-      
+      <p class="lead">Morning transit activity animated from GTFS feeds. Designed to match my Commuting Patterns site.</p>
       <nav class="nav">
         <a class="pill" href="#seattle">Seattle</a>
         <a class="pill" href="#portland">Portland</a>
         <a class="pill" href="https://sungyol2.github.io/Commuting_Patterns/">Commuting Patterns ↗</a>
-        <a class="pill" href="https://github.com/USERNAME/REPO">GitHub Repo ↗</a>
+        <a class="pill" href="https://github.com/sungyol2/GTFS">GitHub Repo ↗</a>
       </nav>
     </header>
 
     <main class="grid">
-
-      <!-- SEATTLE CARD -->
+      <!-- SEATTLE -->
       <section class="card" id="seattle">
-        <h2>Seattle–Bellevue–Tacoma</h2>
-        <video controls poster="assets/thumb_seattle.png">
-          <source src="assets/seattle_gtfs.mp4" type="video/mp4">
-        </video>
-        <p class="caption">Autumn weekday morning movement across the regional network.<br>
-        Employment density from LODES8 shown beneath.</p>
-        <div class="meta">Modes: Light rail, Streetcar, Commuter rail, Bus, Ferry</div>
+        <h2>🛶 Seattle–Bellevue–Tacoma</h2>
+        <div class="media">
+          <video controls playsinline preload="metadata" poster="assets/thumb_seattle.png">
+            <!-- MP4 (primary) -->
+            <source src="assets/seattle_gtfs.mp4?v=1" type="video/mp4">
+            <!-- Optional WebM (secondary) -->
+            <!-- <source src="assets/seattle_gtfs.webm" type="video/webm"> -->
+            Your browser does not support the video tag.
+          </video>
+          <div class="fallback hidden" id="fallback-sea">
+            <p class="warn">Video failed to load. Try the direct link:</p>
+            <p><a class="pill" href="assets/seattle_gtfs_by_agency.mp4">Download / Open MP4</a></p>
+          </div>
+        </div>
+        <p class="caption">
+          Autumn weekday morning movement across the regional network.
+          Employment density (LODES8) underlay.
+        </p>
+        <div class="meta">Modes: Light rail • Streetcar • Commuter rail • Bus • Ferry</div>
       </section>
 
-      <!-- PORTLAND CARD -->
+      <!-- PORTLAND -->
       <section class="card" id="portland">
-        <h2>Portland</h2>
-        <video controls poster="assets/thumb_portland.png">
-          <source src="assets/portland_gtfs.mp4" type="video/mp4">
-        </video>
-        <p class="caption">Weekday morning transit pattern over TriMet’s network.</p>
-        <div class="meta">Modes: Light rail, Bus, Commuter rail (if applicable)</div>
+        <h2>🌲 Portland</h2>
+        <div class="media">
+          <video controls playsinline preload="metadata" poster="assets/thumb_portland.png">
+            <source src="assets/portland_gtfs.mp4?v=1" type="video/mp4">
+            <!-- <source src="assets/portland_gtfs.webm" type="video/webm"> -->
+            Your browser does not support the video tag.
+          </video>
+          <div class="fallback hidden" id="fallback-por">
+            <p class="warn">Video failed to load. Try the direct link:</p>
+            <p><a class="pill" href="assets/portland_gtfs.mp4">Download / Open MP4</a></p>
+          </div>
+        </div>
+        <p class="caption">Weekday morning movement across the TriMet network.</p>
+        <div class="meta">Modes: Light rail • Bus • Commuter rail (if applicable)</div>
       </section>
-
     </main>
 
     <footer>
       <div>© <span id="yr"></span> Sun-Gyo Lee — Built with open data • GitHub Pages</div>
     </footer>
-
   </div>
 
   <script>
+    // Year
     document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
 
+    // If a <video> errors, show the fallback block with a direct link
+    document.querySelectorAll('.media').forEach((wrap, idx) => {
+      const vid = wrap.querySelector('video');
+      const fallback = wrap.querySelector('.fallback');
+      if (vid && fallback) {
+        vid.addEventListener('error', () => { fallback.classList.remove('hidden'); });
+        // if source can't load metadata, also reveal fallback
+        vid.addEventListener('stalled', () => { fallback.classList.remove('hidden'); });
+      }
+    });
+  </script>
 </body>
 </html>
