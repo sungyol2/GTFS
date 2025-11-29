@@ -22,10 +22,11 @@ html, body {
 
 body{
   body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  body {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   color: var(--fg);
   background: var(--bg);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* Page wrapper */
